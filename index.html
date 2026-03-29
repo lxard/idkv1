@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store Premium</title>
+
+<style>
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #0a0f1c, #05070d);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* RAIN GLOW EFFECT */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top, rgba(0,255,255,0.15), transparent 60%);
+    animation: glowPulse 5s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes glowPulse {
+    from { opacity: 0.3; }
+    to { opacity: 0.7; }
+}
+
+/* CONTAINER */
+.container {
+    max-width: 480px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* TITLE */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(0,255,200,0.2);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+/* SCROLL ANIMATION */
+.card.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* TEXT */
+.price {
+    font-size: 18px;
+    color: #00ffc3;
+    font-weight: bold;
+}
+
+.label {
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.garansi { background: green; }
+.nogaransi { background: red; }
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #00ffc3;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ffc3;
+}
+
+/* SECTION */
+.section {
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Produk Premium</h2>
+
+    <div class="card">
+        <h3>Netflix Premium</h3>
+        <div class="price">Rp25.000</div>
+        <span class="label garansi">Garansi</span>
+        <button>Beli</button>
+    </div>
+
+    <div class="card">
+        <h3>Spotify Premium</h3>
+        <div class="price">Rp15.000</div>
+        <span class="label nogaransi">No Garansi</span>
+        <button>Beli</button>
+    </div>
+
+    <div class="section">
+        <h2>Dana Kaget 🎁</h2>
+
+        <div class="card">
+            <h3>Rp50.000</h3>
+            <button>Klaim Dana</button>
+        </div>
+
+        <div class="card">
+            <h3>Rp100.000</h3>
+            <button>Klaim Dana</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// SCROLL ANIMATION
+const cards = document.querySelectorAll('.card');
+
+function showCards() {
+    const trigger = window.innerHeight * 0.9;
+
+    cards.forEach(card => {
+        const top = card.getBoundingClientRect().top;
+        if (top < trigger) {
+            card.classList.add('show');
+        }
+    });
+}
+
+window.addEventListener('scroll', showCards);
+showCards();
+</script>
+
+</body>
+</html>

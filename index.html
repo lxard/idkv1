@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fafnir</title>
+<title>Lux Store</title>
 
 <style>
 html {
@@ -12,25 +12,25 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(180deg, #0a0f1c, #05070d);
     color: white;
     overflow-x: hidden;
 }
 
-/* RAIN GLOW EFFECT */
+/* GLOW AFTER RAIN */
 body::before {
     content: "";
     position: fixed;
     width: 100%;
     height: 100%;
     background: radial-gradient(circle at top, rgba(0,255,255,0.15), transparent 60%);
-    animation: glowPulse 5s infinite alternate;
+    animation: glow 6s infinite alternate;
     z-index: -1;
 }
 
-@keyframes glowPulse {
-    from { opacity: 0.3; }
+@keyframes glow {
+    from { opacity: 0.2; }
     to { opacity: 0.7; }
 }
 
@@ -50,17 +50,16 @@ h2 {
 /* CARD */
 .card {
     background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     padding: 15px;
     border-radius: 15px;
     margin-bottom: 15px;
-    box-shadow: 0 0 15px rgba(0,255,200,0.2);
-    transform: translateY(20px);
+    box-shadow: 0 0 20px rgba(0,255,200,0.2);
+    transform: translateY(30px);
     opacity: 0;
-    transition: 0.5s;
+    transition: 0.6s;
 }
 
-/* SCROLL ANIMATION */
 .card.show {
     transform: translateY(0);
     opacity: 1;
@@ -77,28 +76,35 @@ h2 {
     padding: 5px 10px;
     border-radius: 10px;
     font-size: 12px;
+    display: inline-block;
+    margin-top: 5px;
 }
 
-.garansi { background: green; }
-.nogaransi { background: red; }
+.garansi { background: #00c853; }
+.nogaransi { background: #ff1744; }
 
 /* BUTTON */
 button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 10px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     background: #00ffc3;
     color: black;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 0 10px #00ffc3;
+    box-shadow: 0 0 12px #00ffc3;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
 }
 
 /* SECTION */
 .section {
-    margin-top: 40px;
+    margin-top: 50px;
 }
 </style>
 </head>
@@ -107,33 +113,45 @@ button {
 
 <div class="container">
 
+    <!-- PRODUK -->
     <h2>Produk Premium</h2>
 
+    <!-- PRODUK 1 -->
     <div class="card">
-        <h3>Netflix Premium</h3>
-        <div class="price">Rp25.000</div>
+        <h3>Alight Motion 1Thn Priv</h3>
+        <div class="price">Rp10.000</div>
         <span class="label garansi">Garansi</span>
-        <button>Beli</button>
+
+        <!-- GANTI LINK WA -->
+        <button onclick="window.location.href='https://wa.me/6285921967820'">
+            Beli Sekarang
+        </button>
     </div>
 
+    <!-- PRODUK 2 -->
     <div class="card">
-        <h3>Spotify Premium</h3>
-        <div class="price">Rp15.000</div>
+        <h3>Alight Motion 1Thn Shar</h3>
+        <div class="price">Rp5.000</div>
         <span class="label nogaransi">No Garansi</span>
-        <button>Beli</button>
+
+        <button onclick="window.location.href='https://wa.me/6285921967820'">
+            Beli Sekarang
+        </button>
     </div>
 
+
+    <!-- DAGET -->
     <div class="section">
         <h2>Dana Kaget 🎁</h2>
 
+        <!-- DAGET 1 -->
         <div class="card">
-            <h3>Rp50.000</h3>
-            <button>Klaim Dana</button>
-        </div>
+            <h3>Rp1.000</h3>
 
-        <div class="card">
-            <h3>Rp100.000</h3>
-            <button>Klaim Dana</button>
+            <!-- GANTI LINK DANA KAGET -->
+            <button onclick="window.location.href=''">
+                Klaim Dana
+            </button>
         </div>
     </div>
 
@@ -143,7 +161,7 @@ button {
 // SCROLL ANIMATION
 const cards = document.querySelectorAll('.card');
 
-function showCards() {
+function reveal() {
     const trigger = window.innerHeight * 0.9;
 
     cards.forEach(card => {
@@ -154,8 +172,8 @@ function showCards() {
     });
 }
 
-window.addEventListener('scroll', showCards);
-showCards();
+window.addEventListener('scroll', reveal);
+reveal();
 </script>
 
 </body>
